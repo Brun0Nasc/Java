@@ -65,6 +65,24 @@ public class Lista<T> {
         }
     }
     
+    public void limpa() {
+        /*
+        Opção 1
+        this.elementos = (T[]) new Object[this.elementos.length];
+        */
+        
+        /*
+        Opção 2
+        this.tamanho = 0
+        */
+        
+        //Opção 3
+        for(int i = 0; i < this.tamanho; i++){
+            this.elementos[i] = null;
+        }
+        this.tamanho = 0;
+    }
+    
     private void aumentaCapacidade(){
         if (this.tamanho == this.elementos.length){
             T[] elementosNovos = (T[]) new Object[this.elementos.length * 2];
@@ -75,12 +93,18 @@ public class Lista<T> {
         }
     }
     
+    // Método que serve pra resolução do exercício 04
     public T busca(int posicao) {
         if(!(posicao >= 0 && posicao < tamanho)){
             throw new IllegalArgumentException("Posição Inválida");
         }
         
         return this.elementos[posicao];
+    }
+    
+    // Método pedido pelo exercicio 04 que vai utilizar o método busca
+    public T obtem(int posicao) {
+        return this.busca(posicao);
     }
     
     public int busca(T elemento) {
@@ -92,20 +116,24 @@ public class Lista<T> {
         return -1;
     }
     
+    // Exercicio 01
     public boolean contem(T elemento) {
         // se o elemento existir retorna um true, se nao, retorna um false
         return this.busca(elemento) > -1;
     }
     
+    /* 
+    * Exercicio 02
+    * itera na lista de trás pra frente e retorna imediatamente o último indice
+    */
     public int ultimoIndex(T elemento) {
-        int index = -1;
-        for (int i = 0; i <this.tamanho; i++) {
+        for (int i = tamanho-1; i >=0 ; i--) {
             if (this.elementos[i].equals(elemento)){
-                index = i;
+                return i;
             }
         }
         
-        return index;
+        return -1;
     }
     
     public int tamanho(){

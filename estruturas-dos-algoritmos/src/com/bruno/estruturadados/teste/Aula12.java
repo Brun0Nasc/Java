@@ -34,7 +34,7 @@ public class Aula12 {
         }
         
         //Retornando objeto do array através da posição informada no método
-        System.out.println(arrayList.get(2));
+        System.out.println("Método get: " + arrayList.get(2));
         
         //Removendo elementos do array tanto pelo índice quanto pelo elemento especificado
         arrayList.remove(0);
