@@ -1,21 +1,17 @@
 package com.bruno.estruturadados;
 
-import java.lang.reflect.Array;
-
 public class Lista<T> {
-        private T[] elementos;
+    private T[] elementos;
     private int tamanho;
     
     public Lista(int capacidade){
         this.elementos = (T[]) new Object[capacidade];
         this.tamanho = 0;
     }
-    /*
-    public Lista(int capacidade, Class<T> tipoClasse){
-        this.elementos = (T[]) Array.newInstance(tipoClasse, capacidade); 
-        this.tamanho = 0;
+    
+    public Lista(){
+        this(10);
     }
-    */
     
     public boolean adiciona(T elemento) {
         this.aumentaCapacidade();
