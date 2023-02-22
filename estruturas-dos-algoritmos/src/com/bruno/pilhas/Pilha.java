@@ -17,4 +17,22 @@ public class Pilha<T> extends EstruturaEstatica<T> {
         
     }
     
+    public T topo(){
+        if(this.estaVazia()) {
+            return null;
+        }
+        
+        return this.elementos[tamanho-1];
+    }
+    
+    public T desempilha() {
+        
+        if(this.estaVazia()){
+            return null;
+        }
+        
+        return this.elementos[--this.tamanho];
+        
+    }
+    
 }
