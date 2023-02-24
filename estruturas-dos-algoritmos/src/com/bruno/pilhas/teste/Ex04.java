@@ -1,12 +1,12 @@
 package com.bruno.pilhas.teste;
 
-import com.bruno.pilhas.Pilha;
 import java.util.Scanner;
+import java.util.Stack;
 
-public class Ex03 {
+public class Ex04 {
     public static void main(String[] args) {
-        Pilha<Livro> pilha = new Pilha<>(20);
-        pilha = criaLivros();
+        Stack<Livro> pilha = new Stack<>();
+        criaLivros(pilha);
         System.out.println(pilha);
         
         System.out.println("");
@@ -30,8 +30,7 @@ public class Ex03 {
         System.out.println("\nPrograma finalizado!");
     }
     
-    private static Pilha<Livro> criaLivros() {
-        Pilha<Livro> pilha = new Pilha<>(20);
+    private static void criaLivros(Stack<Livro> pilha) {
         
         for(int i = 1; i <= 6; i++) {
             Livro l = new Livro();
@@ -40,10 +39,8 @@ public class Ex03 {
             l.setAutor("Autor " + i);
             l.setAno(2020 + i);
             
-            pilha.empilha(l);
+            pilha.push(l);
         }
-        
-        return pilha;
     }
     
     private static int opcaoMenu(Scanner scanner) {
@@ -111,7 +108,7 @@ public class Ex03 {
         return num;
     }
     
-    private static void adicionaLivro(Scanner scan, Pilha<Livro> pilha) {
+    private static void adicionaLivro(Scanner scan, Stack<Livro> pilha) {
         System.out.println("\nAdicionando novo livro à pilha:");
         
         String nome = leInformacao("Informe o nome do livro: ", scan);
@@ -122,32 +119,32 @@ public class Ex03 {
         
         Livro l = new Livro(nome, isbn, ano, autor);
         
-        pilha.empilha(l);
+        pilha.push(l);
         
         System.out.println("\nLivro adicionado com sucesso \n");
     }
     
-    private static void desempilha(Pilha<Livro> pilha) {
-        System.out.println("\nDesempilhando " + pilha.desempilha() + "\n");
+    private static void desempilha(Stack<Livro> pilha) {
+        System.out.println("\nDesempilhando " + pilha.pop() + "\n");
     }
     
-    private static void verUltimoLivro(Pilha<Livro> pilha) {
-        System.out.println("\n"+pilha.topo() + "\n");
+    private static void verUltimoLivro(Stack<Livro> pilha) {
+        System.out.println("\n"+pilha.peek() + "\n");
     }
 
-    private static void verificarPilhaVazia(Pilha<Livro> pilha) {
-        if (pilha.estaVazia()) {
+    private static void verificarPilhaVazia(Stack<Livro> pilha) {
+        if (pilha.isEmpty()) {
             System.out.println("\nA pilha está vazia." + "\n");
         } else {
             System.out.println("\nA pilha não está vazia." + "\n");
         }
     }
     
-    private static void verTamanho(Pilha<Livro> pilha) {
-        System.out.println("\nA pilha tem " + pilha.tamanho() + " livros empilhados.\n");
+    private static void verTamanho(Stack<Livro> pilha) {
+        System.out.println("\nA pilha tem " + pilha.size() + " livros empilhados.\n");
     }
     
-    private static void imprimirPilha(Pilha<Livro> pilha) {
+    private static void imprimirPilha(Stack<Livro> pilha) {
         System.out.println(pilha + "\n");
     }
     
