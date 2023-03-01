@@ -9,6 +9,7 @@ public class Ex07 {
         converteParaBin(2);
         converteParaBin(3);
         converteParaBin(100);
+        System.out.println(converteParaQualquerBase(11, 16));
     }
     
     private static void converteParaBin(int dec) {
@@ -22,6 +23,25 @@ public class Ex07 {
         }
         
         imprimeBin(pilha);
+    }
+    
+    private static String converteParaQualquerBase(int dec, int base) {
+        Stack<Integer> pilha = new Stack<>();
+        String numBase = "";
+        int resto;
+        String bases = "0123456789ABCDEF";
+        
+        while(dec > 0) {
+            resto = dec%base;
+            dec/=base;
+            pilha.push(resto);
+        }
+        
+        while(!pilha.isEmpty()){
+            numBase += bases.charAt(pilha.pop());
+        }
+        
+        return numBase;
     }
     
     private static void imprimeBin(Stack<Integer> pilha) {
